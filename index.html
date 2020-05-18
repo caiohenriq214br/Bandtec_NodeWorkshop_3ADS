@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Workshop NodeJS - Bandtec</title>
+</head>
+
+<body>
+
+    <section id="top-container">
+        <img src="./assets/images/Logo_Bandtec_Pequeno.png" width="200" height="70" alt="Logo Bandtec Digital School">
+    </section>
+
+    <section id="middle-container">
+
+        <form id="form-post">
+            <fieldset>
+                <label for="request_body">Corpo da requisição</label>
+                <input name="message" id="request_body" />
+            </fieldset>
+            <fieldset class="select">
+                <label for="moedas_conversao_de">(Moeda) De</label>
+                <select id="moedas_conversao_de">
+                    <option value="BRL">Real</option>
+                    <option value="USD">Dólar</option>
+                    <option value="EUR">Euro</option>
+                </select>
+            </fieldset>
+            <fieldset class="select">
+                <label for="moedas_conversao_para">(Moeda) Para</label>
+                <select id="moedas_conversao_para">
+                    <option value="BRL">Real</option>
+                    <option value="USD">Dólar</option>
+                    <option value="EUR">Euro</option>
+                </select>
+            </fieldset>
+        </form>
+
+        <div id="buttons-container">
+            <button class="button-request" onclick="viaCepRequest()">ViaCEP Request</button>
+            <button class="button-request" onclick="exchangeRatesRequest()">Cotação Request</button>
+            <button class="button-request" onclick="postRequest()">POST request</button>
+            <button class="button-request" onclick="todosRequest()">Todos request</button>
+        </div>
+
+        <div id="container-div-resposta">
+            <textarea id="div-resposta"></textarea>
+        </div>
+
+    </section>
+
+</body>
+
+</html>
+
+<script src="./node_modules/codemirror/lib/codemirror.js"></script>
+<link rel="stylesheet" href="./node_modules/codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="./node_modules/codemirror/theme/darcula.css">
+<script src="./node_modules/codemirror/mode/javascript/javascript.js"></script>
+<script src="./assets/js/utils.js"></script>
+<script src="./assets/js/main.js"></script>

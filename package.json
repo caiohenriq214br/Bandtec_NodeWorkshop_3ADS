@@ -1,0 +1,34 @@
+{
+  "name": "bandtec_nodeworkshop_3ads",
+  "version": "1.0.0",
+  "description": "Workshop de NodeJS da Bandtec do 3ADS.",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js",
+    "static": "nodemon static.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caiohenriq214br/Bandtec_NodeWorkshop_3ADS.git"
+  },
+  "keywords": [
+    "bandtec",
+    "workshop",
+    "nodeJS"
+  ],
+  "author": "@caiohenriq214br",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caiohenriq214br/Bandtec_NodeWorkshop_3ADS/issues"
+  },
+  "homepage": "https://github.com/caiohenriq214br/Bandtec_NodeWorkshop_3ADS#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "codemirror": "^5.53.2",
+    "express": "^4.17.1",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
