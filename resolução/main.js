@@ -62,6 +62,18 @@ function manipulateTodosArrowFn(todos) {
         }
         return false;
     });
+
+/*
+    SEM Arrow Function
+    const newTodos = todos.filter(function(elemento){
+        if (elemento.completed) {
+            contador++;
+            return true;
+        }
+        return false;
+    });
+*/
+
     alert(`A request trouxe ${contador} TODOS completados`);
     return JSON.stringify(newTodos, null, '\t');
 }

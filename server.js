@@ -23,4 +23,19 @@ server.post('/', [formParser, jsonParser, textParser], (request, response) => {
     response.end();
 });
 
+
+server.get('/segredo', (request, response) => {
+    //response.write(JSON.stringify({ headers: request.headers}));
+    if (request.headers.token) {
+        if (request.headers.token == '1234') {
+            response.write(`O segredo é que você se identificou como ${request.headers.token}`);
+        } else {
+            response.status(403).write(`Eu te conheço mas não posso te contar o segredo`);
+        }
+    } else {
+        response.status(401).write('Não sei quem é você!')
+    }
+    response.end();
+});
+
 server.listen(PORT, () => console.log(`Running at ${PORT}`));
