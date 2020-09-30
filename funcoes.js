@@ -6,9 +6,11 @@ cumprimentar = () => {
 }
 
 soma = (n1, n2) => {
+    console.log(`Você está prestes a realizar a operação de ${operacao}`);
+    var operacao = 'Soma';
+    // let operacao = 'Soma';
     console.log('Soma: ', Number(n1) + Number(n2));
 }
-
 
 const funcoes = [cumprimentar, soma];
 
