@@ -25,7 +25,6 @@ server.post('/', [formParser, jsonParser, textParser], (request, response) => {
 
 
 server.get('/segredo', (request, response) => {
-    //response.write(JSON.stringify({ headers: request.headers}));
     if (request.headers.token) {
         if (request.headers.token == '1234') {
             response.write(`O segredo é que você se identificou como ${request.headers.token}`);

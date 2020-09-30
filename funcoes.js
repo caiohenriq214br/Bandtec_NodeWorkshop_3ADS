@@ -1,9 +1,12 @@
+const day_of_week = new Date().getDay();
+const cumprimento = `Olá, 3ADS${day_of_week === 1 ? 'A' : 'B'}`;
+
 cumprimentar = () => {
-    console.log('olá, gente!')
+    console.log(cumprimento);
 }
 
 soma = (n1, n2) => {
-    console.log('soma!', Number(n1)+Number(n2));
+    console.log('Soma: ', Number(n1) + Number(n2));
 }
 
 
