@@ -7,6 +7,25 @@ function postRequest() {
         .catch(handleError);
 }
 
+function getComHeaderRequest() {
+    const senha = document.getElementById('request_body').value;
+    const header = new Headers({ 'Authorization': senha });
+    fetch('http://localhost:8081/encrypt', { method: 'GET', headers: header })
+        .then(validateResponse)
+        .then(readResponseAsJSON)
+        .then(showResponseOnPage)
+        .catch(handleError);
+}
+
+function authRequest() {
+    const formData = new FormData(document.getElementById('form-post'));
+    fetch('http://localhost:8081/auth', { method: 'POST', body: formData })
+        .then(validateResponse)
+        .then(readResponseAsJSON)
+        .then(showResponseOnAlert)
+        .catch(handleAuthError);
+}
+
 function viaCepRequest() {
     if (requestIsFine()) {
         const BASE_URL = `https://viacep.com.br/ws/`;
@@ -63,16 +82,16 @@ function manipulateTodosArrowFn(todos) {
         return false;
     });
 
-/*
-    SEM Arrow Function
-    const newTodos = todos.filter(function(elemento){
-        if (elemento.completed) {
-            contador++;
-            return true;
-        }
-        return false;
-    });
-*/
+    /*
+        SEM Arrow Function
+        const newTodos = todos.filter(function(elemento){
+            if (elemento.completed) {
+                contador++;
+                return true;
+            }
+            return false;
+        });
+    */
 
     alert(`A request trouxe ${contador} TODOS completados`);
     return JSON.stringify(newTodos, null, '\t');
@@ -99,9 +118,29 @@ async function readResponseAsJSON(response) {
 }
 
 function showResponseOnPage(response) {
+    if (typeof response !== 'string') {
+        response = JSON.stringify(response, null, '\t');
+    }
     return AreaDeResposta.setValue(response);
+}
+
+function showResponseOnAlert(response) {
+    if (typeof response === 'string')
+        response = JSON.parse(response);
+    return alert(response.message);
 }
 
 function handleError(error) {
     return alert(error);
+}
+
+function handleAuthError(error) {
+    error = error + '';
+    if (error.indexOf("TypeError: Failed to fetch") > -1) {
+        return alert("Verifica se o servidor está ligado ;) ... se estiver, chama o professor!");
+    }
+    if (error.indexOf("Internal Server Error") > -1) {
+        return alert("Erro no servidor!");
+    }
+    return alert("Acesso não autorizado!");
 }

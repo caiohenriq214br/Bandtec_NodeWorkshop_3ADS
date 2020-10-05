@@ -4,21 +4,29 @@ function postRequest() {
     */
 }
 
-function viaCepRequest() {
-    if (requestIsFine()) {
-        const BASE_URL = `https://viacep.com.br/ws/`;
-        /*
-            FETCH API
-        */
-    } else {
-        alert('Prestenção na sua Request cabeção !');
-    }
-}
-
-function exchangeRatesRequest() {
+function getComHeaderRequest() {
     /*
         FETCH API
     */
+}
+
+function authRequest() {
+    /*
+        FETCH API
+    */
+}
+
+function viaCepRequest() {
+    if (requestIsFine()) {
+        const BASE_URL = `https://viacep.com.br/ws/`;
+        fetch(`${BASE_URL}${request_body.value}/json`)
+            .then(validateResponse)
+            .then(readResponseAsJSON)
+            .then(showResponseOnPage)
+            .catch(handleError);
+    } else {
+        alert('Prestenção na sua Request cabeção !');
+    }
 }
 
 function todosRequest() {
@@ -74,6 +82,23 @@ function showResponseOnPage(response) {
     return AreaDeResposta.setValue(response);
 }
 
+function showResponseOnAlert(response) {
+    if (typeof response === 'string')
+        response = JSON.parse(response);
+    return alert(response.message);
+}
+
 function handleError(error) {
     return alert(error);
+}
+
+function handleAuthError(error) {
+    error = error + '';
+    if (error.indexOf("TypeError: Failed to fetch") > -1) {
+        return alert("Verifica se o servidor está ligado ;) ... se estiver, chama o professor!");
+    }
+    if (error.indexOf("Internal Server Error") > -1) {
+        return alert("Erro no servidor!");
+    }
+    return alert("Acesso não autorizado!");
 }
